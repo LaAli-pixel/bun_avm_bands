@@ -16,6 +16,10 @@ export const creareServer = () => {
         socket.emit("saludo", "Hola desde el servidor");
     
         socket.on("chat", (msg)=> io.emit("chat", msg));
+
+        io.on("disconnect", () => {
+            console.log(`Cliente desconectado: ${socket.id}`);
+        });
     })
 
 
